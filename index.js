@@ -13,10 +13,10 @@ app.use(fileUpload());
 
 
 const dbConfig = {
-  host: "localhost",
-  user: "root",
-  password: "",
-  database: "pyramid"
+  host: "sql10.freesqldatabase.com",
+  user: "sql10711598",
+  password: "ZhhxMYJC6g",
+  database: "sql10711598"
 };
 
 let db;
