@@ -910,7 +910,7 @@ export async function run(filePath) {
     "totalTrasVencimiento": 40712.55
 }`;
 
-const factura9 = fileToGenerativePart("facturasEntrenamiento/factura9.jpeg", "image/jpeg")
+const factura9 = fileToGenerativePart("facturasEntrenamiento/factura9.jpg", "image/jpg")
 const factura9Response = `
 {
   "codigoFactura": "000300000907X",
