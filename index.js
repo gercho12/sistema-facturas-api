@@ -13,7 +13,7 @@ app.use(fileUpload());
 
 
 const dbConfig = {
-  host: "http://3.133.139.29/",
+  host: "3.133.139.29",
   user: "phpmyadmin",
   password: "rosa2022",
   database: "pyramid"
