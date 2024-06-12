@@ -13,10 +13,11 @@ app.use(fileUpload());
 
 
 const dbConfig = {
-  host: "ec2-3-133-139-29.us-east-2.compute.amazonaws.com",
-  user: "phpmyadmin",
-  password: "rosa2022",
-  database: "pyramid"
+  host: "mysql-175372-0.cloudclusters.net",
+  user: "admin",
+  password: "xMrPifb2",
+  database: "pyramid",
+  port:"10024"
 };
 
 let db;
