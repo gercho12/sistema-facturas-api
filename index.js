@@ -13,11 +13,11 @@ app.use(fileUpload());
 
 
 const dbConfig = {
-  host: "mysql-175372-0.cloudclusters.net",
+  host: "mysql-176259-0.cloudclusters.net",
   user: "admin",
-  password: "xMrPifb2",
+  password: "vo3XfST8",
   database: "pyramid",
-  port:"10024"
+  port:"19902"
 };
 
 let db;
