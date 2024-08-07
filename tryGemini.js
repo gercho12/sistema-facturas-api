@@ -129,16 +129,16 @@ export async function run(filePath) {
       ]
       
      const generationConfig = {
-        "temperature": 0.9,
-        "top_p": 0.95,
-        "top_k": 64,
+        "temperature": 0.4,
+        "top_p": 0.99,
+        "top_k": 128,
         "max_output_tokens": 8192,
         "response_mime_type": "application/json",
       }
       
       try {
   // For text-and-image input (multimodal), use the gemini-pro-vision model
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest", safetySettings, systemInstruction, generationConfig  });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro", safetySettings, systemInstruction, generationConfig  });
 
   const factura1 = fileToGenerativePart("facturasEntrenamiento/factura1.jpg", "image/jpg")
   const factura1Response = `
@@ -1065,6 +1065,825 @@ const factura9Response = `
   "totalTrasVencimiento": 514330.03
 }
 `;
+
+const factura10 = fileToGenerativePart("facturasEntrenamiento/factura10.jpg", "image/jpg")
+const factura10Response = `
+{
+    "codigoFactura": "A00010-00715690",
+    "tipoFactura": "A",
+    "fechaEmision": "02-07-2024",
+    "fechaVencimiento": "09-07-2024",
+    "emisor": {
+        "nombre": "ALYSER S.A.",
+        "direccion": "Dardo Rocha 2324 - (B1640FTF) Martínez Pcia. de Buenos Aires",
+        "telefono": "+54 (011) 3220-0154",
+        "email": "ventas@alyser.com",
+        "CUIT": "30-70776023-7"
+    },
+    "receptor": {
+        "nombre": "CREANDO PAN S.A",
+        "direccion": "BOLIVAR 402 1704 - RAMOS MEJIA Buenos Aires",
+        "telefono": "4844-2857",
+        "email": null,
+        "CUIT": "30-71602726-7"
+    },
+    "items": [
+        {
+            "codigo": "775402001",
+            "descripcion": "FECULA DE MAIZ BUFFALO",
+            "volumenUnidad": 257,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 19344.00,
+            "precioUnidad": 19344.00,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 19344.48
+        },
+        {
+            "codigo": "77541805",
+            "descripcion": "SEMOLIN CAMPODONICO",
+            "volumenUnidad": 25,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 19499.48,
+            "precioUnidad": 19499.48,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 19499.48
+        },
+        {
+            "codigo": "412799901",
+            "descripcion": "SEMILLAS DE SESAMO NEGRO",
+            "volumenUnidad": 1,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 4823.00,
+            "precioUnidad": 4823.00,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 9646.00
+        },
+        {
+            "codigo": "613215001",
+            "descripcion": "CREMA MILKAUIT POTE",
+            "volumenUnidad": 5,
+            "medicionVolumen": "Litros",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 30609,
+            "precioUnidad": 30609,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 61218
+        },
+        {
+            "codigo": "618221206",
+            "descripcion": "QUESO CREMA ENTERO PAULINA",
+            "volumenUnidad": 4,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 14295.6,
+            "precioUnidad": 14295.6,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 28591.2
+        }
+    ],
+    "subtotal": 138298.68,
+    "impuestos": {
+        "IVA": {
+            "tasa": 0.315,
+            "monto": 25.982,45
+        },
+        "percepcionIVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "percepcionIIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "IIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 164281.13,
+    "totalTrasVencimiento": 164281.13
+}
+`
+const factura11 = fileToGenerativePart("facturasEntrenamiento/factura11.jpg", "image/jpg")
+const factura11Response = `
+{
+    "codigoFactura": "01054-00014255",
+    "tipoFactura": "A",
+    "fechaEmision": "20-06-2024",
+    "fechaVencimiento": "30-06-2024",
+    "emisor": {
+        "nombre": "MAYCAR S.A.",
+        "direccion": "Av. Marquez 969  LOMA HERMOSA, BUENOS AIRES (1657)",
+        "telefono": "4556-4400",
+        "email": null,
+        "CUIT": "30-61286533-3"
+    },
+    "receptor": {
+        "nombre": "CREANDO PAN S.A",
+        "direccion": "BOLIVAR 402 RAMOS MEJIA (1704) BUENOS AIRES",
+        "telefono": null,
+        "email": null,
+        "CUIT": "30-71602726-7"
+    },
+    "items": [
+        {
+            "codigo": "0179063",
+            "descripcion": "Apositos CURITAS tela elastica",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 935.45,
+            "precioUnidad": 46.77,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 1870.9
+        },
+        {
+            "codigo": "0154003",
+            "descripcion": "BOLSA ECOLOGICA",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 577.69,
+            "precioUnidad": 577.69,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 577.69
+        },
+        {
+            "codigo": "0159628",
+            "descripcion": "Cacao TODDY extremo",
+            "volumenUnidad": 0.8,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 3299.13,
+            "precioUnidad": 3299.13,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 1399.38
+        },
+        {
+            "codigo": "0194458",
+            "descripcion": "Cafe instantaneo ARLISTAN",
+            "volumenUnidad": 0.170,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 3500.54,
+            "precioUnidad": 3500.54,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 3420
+        },
+        {
+            "codigo": "0182239",
+            "descripcion": "Caramelos BUTTER TOFFEES avellana",
+            "volumenUnidad": 0.648,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 3420,
+            "precioUnidad": 3420,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 3500.54
+        },
+        {
+            "codigo": "0118320",
+            "descripcion": "Caramelos LIPO super acidos",
+            "volumenUnidad": 0-907,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 3966.87,
+            "precioUnidad": 3966.87,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 3966.87
+        },
+        {
+            "codigo": "0105238",
+            "descripcion": "Caramelos SUGUS",
+            "volumenUnidad": 0.7,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 3395.12,
+            "precioUnidad": 3395.12,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 3395.12
+        },
+        {
+            "codigo": "0176405",
+            "descripcion": "Galletitas PEPITOS",
+            "volumenUnidad": 0.119,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 3,
+            "precioBulto": 2563.52,
+            "precioUnidad": 854.5,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 5127.04
+        },
+        {
+            "codigo": "0176631",
+            "descripcion": "Galletitas VARIEDAD ",
+            "volumenUnidad": 0.590,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 1922.86,
+            "precioUnidad": 1922.86,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1922.86
+        },
+        {
+            "codigo": "0159268",
+            "descripcion": "Manteca PRIMER PREMIO",
+            "volumenUnidad": 2.5,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 23007.44,
+            "precioUnidad": 5858.74,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 46014.88
+        },
+        {
+            "codigo": "0125465",
+            "descripcion": "Prot.diarios CARREFRE b/tanga",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 60,
+            "precioBulto": 5858.68,
+            "precioUnidad":  97.63,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 5858.68
+        },
+        {
+            "codigo": "0157022",
+            "descripcion": "Prot.diarios CARREFRE tod/dias",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 100,
+            "precioBulto": 6610.74,
+            "precioUnidad":  66.1,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 6610.74
+        },
+        {
+            "codigo": "0149624",
+            "descripcion": "Te LA VIRGINIA canela",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 1329.63,
+            "precioUnidad": 66.48,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1329.63
+        },
+        {
+            "codigo": "0176435",
+            "descripcion": "Te LA VIRGINIA manza/anis hierbas",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 25,
+            "precioBulto": 1329.63,
+            "precioUnidad": 53.18,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1329.63
+        },
+        {
+            "codigo": "0176159",
+            "descripcion": "Te LA VIRGINIA tilo/manza./cedron",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 25,
+            "precioBulto": 1424.67,
+            "precioUnidad": 56.98,
+            "cantBultosItem": 2,
+            "bonificacion": 0,
+            "importeItem": 2849.33
+        },
+        {
+            "codigo": "0149544",
+            "descripcion": "Te LA VIRGINIA verde citrus",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 1297.32,
+            "precioUnidad": 64.86,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1297.32
+        },
+        {
+            "codigo": "0181932",
+            "descripcion": "Te TARAGUI placeres avellanas",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 1411.36,
+            "precioUnidad": 70.56,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1411.36
+        },
+        {
+            "codigo": "0181931",
+            "descripcion": "Te TARAGUI placeres limon y miel",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 1411.36,
+            "precioUnidad": 70.56,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1411.36
+        },
+        {
+            "codigo": "0181930",
+            "descripcion": "Te TARAGUI placeres manzana/canela",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 1411.36,
+            "precioUnidad": 70.56,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1411.36
+        },
+        {
+            "codigo": "0127753",
+            "descripcion": "Te silvestre TARAGUI mezcla",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 25,
+            "precioBulto": 1500.7,
+            "precioUnidad": 60.02,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1500.7
+        },
+        {
+            "codigo": "0182812",
+            "descripcion": "Toallas humedas Q-SOFT clasica",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 40,
+            "precioBulto": 3258.96,
+            "precioUnidad": 78.9,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 3258.96
+        },
+        {
+            "codigo": "0140040",
+            "descripcion": "Yerba VERDEFLOR con boldo",
+            "volumenUnidad": 1,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 2156.96,
+            "precioUnidad": 2156.07,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 2258.07
+        },
+        {
+            "codigo": "0175973",
+            "descripcion": "Yogur desc. LA SERENISIMA c/cereal",
+            "volumenUnidad": 0.157,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 1449.38,
+            "precioUnidad": 1449.38,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1449.38
+        }
+    ],
+    "subtotal": 105547.24,
+    "impuestos": {
+        "IVA": {
+            "tasa": 0.21,
+            "monto": 22164.92
+        },
+        "percepcionIVA": {
+            "tasa": 0.03,
+            "monto": 3166.42
+        },
+        "perepcionIIBB": {
+            "tasa": 0.015,
+            "monto": 1688.76
+        },
+        "IIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 132567.34,
+    "totalTrasVencimiento": 132567.34
+}
+`
+const factura12 = fileToGenerativePart("facturasEntrenamiento/factura12.jpg", "image/jpg")
+const factura12Response = `
+{
+    "codigoFactura": 00001-00001722,
+    "tipoFactura": R,
+    "fechaEmision": "21/06/24",
+    "fechaVencimiento": null,
+    "emisor": {
+        "nombre": "Molino Mayal S.A.",
+        "direccion": "Guido 1166 - (1643) Beccar  Prov. de Buenos Aires - Argentina",
+        "telefono": "54 11 4747-1313",
+        "email": null,
+        "CUIT": "30-71456873-2"
+    },
+    "receptor": {
+        "nombre": null,
+        "direccion": null,
+        "telefono": null,
+        "email": null,
+        "CUIT": null
+    },
+    "items": [
+        {
+            "codigo": null,
+            "descripcion": "Espelta",
+            "volumenUnidad": 10,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 30240,
+            "precioUnidad": 30240,
+            "cantBultosItem": 5,
+            "bonificacion": 0,
+            "importeItem": 151200
+        },
+        {
+            "codigo": null,
+            "descripcion": "Centeno 000",
+            "volumenUnidad": 10,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 17550,
+            "precioUnidad": 17550,
+            "cantBultosItem": 5,
+            "bonificacion": 0,
+            "importeItem": 87750
+        },
+        {
+            "codigo": null,
+            "descripcion": "Envio",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 6000,
+            "precioUnidad": 6000,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 6000
+        }
+    ],
+    "subtotal": null,
+    "impuestos": {
+        "IVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "percepcionIVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "perepcionIIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "IIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 244950,
+    "totalTrasVencimiento": null
+}
+`
+const factura13 = fileToGenerativePart("facturasEntrenamiento/factura13.jpg", "image/jpg")
+const factura13Response = `
+{
+    "codigoFactura": "A 0004 - 00007960",
+    "tipoFactura": "A",
+    "fechaEmision": "21/06/2024",
+    "fechaVencimiento": "01/07/2024",
+    "emisor": {
+        "nombre": "MONCHIFOOD S.R.L.",
+        "direccion": "AV. DEL LIBERTADOR 8520 - CABA",
+        "telefono": "1121814591",
+        "email": null,
+        "CUIT": "30-71635628-7"
+    },
+    "receptor": {
+        "nombre": "CREANDO PAN S.A.",
+        "direccion": "MIGUEL ANGEL 5495 VILLA BOSCH",
+        "telefono": null,
+        "email": null,
+        "CUIT": "30716027267"
+    },
+    "items": [
+        {
+            "codigo": "009500",
+            "descripcion": "MANTECA",
+            "volumenUnidad": 5,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 38842.98,
+            "precioUnidad": 38842.98,
+            "cantBultosItem": 4,
+            "bonificacion": 0,
+            "importeItem": 155371.9
+        },
+        {
+            "codigo": "0010507",
+            "descripcion": "CREMA MILKKAUT BALDE 44%",
+            "volumenUnidad": 5,
+            "medicionVolumen": "Litros",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 28568.84,
+            "precioUnidad": 28568.84,
+            "cantBultosItem": 4,
+            "bonificacion": 0,
+            "importeItem": 28568.84
+        },
+        {
+            "codigo": "006654",
+            "descripcion": "O-TENTIC DURUM",
+            "volumenUnidad": 1,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 28116.28,
+            "precioUnidad": 28116.28,
+            "cantBultosItem": 0,
+            "bonificacion": 50,
+            "importeItem": 14058.1
+        }
+    ],
+    "subtotal": 197998.88,
+    "impuestos": {
+        "IVA": {
+            "tasa": 0.21,
+            "monto": 41579.76
+        },
+        "percepcionIVA": {
+            "tasa": null,
+            "monto": 5518.22
+        },
+        "percepcionIIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 245096.91,
+    "totalTrasVencimiento": 245096.91
+}
+`
+const factura14 = fileToGenerativePart("facturasEntrenamiento/factura14.jpg", "image/jpg")
+const factura14Response = `
+{
+    "codigoFactura": Z0098-77975528,
+    "tipoFactura": null,
+    "fechaEmision": "26/06/2024",
+    "fechaVencimiento": "26/06/2024",
+    "emisor": {
+        "nombre": null,
+        "direccion": null,
+        "telefono": null,
+        "email": null,
+        "CUIT": null
+    },
+    "receptor": {
+        "nombre": "Consumidor Final",
+        "direccion": null,
+        "telefono": null,
+        "email": null,
+        "CUIT": null
+    },
+    "items": [
+        {
+            "codigo": "P1002",
+            "descripcion": "LECHE ARMONIA SACHET",
+            "volumenUnidad": 1,
+            "medicionVolumen": "Litros",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 870.29,
+            "precioUnidad": 870.29,
+            "cantBultosItem": 6,
+            "bonificacion": 0,
+            "importeItem": 5221.74
+        },
+        {
+            "codigo": "CH027",
+            "descripcion": "CHOCO DOS CORAZONES",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 20,
+            "precioBulto": 19729.8,
+            "precioUnidad": 986.49,
+            "cantBultosItem": 19,
+            "bonificacion": 0,
+            "importeItem": 19729.8
+        },
+        {
+            "codigo": "1736",
+            "descripcion": "BOCADITO CABSHA MARROC",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 24,
+            "precioBulto": 5596,
+            "precioUnidad": 33.16,
+            "cantBultosItem": 3,
+            "bonificacion": 0,
+            "importeItem": 5596
+        },
+        {
+            "codigo": "P1005",
+            "descripcion": "BOMBON CACHaFAZ MARROC",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 54,
+            "precioBulto": 33509.6,
+            "precioUnidad": 620.54,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 33509.6
+        },
+        {
+            "codigo": "GL039",
+            "descripcion": "GALLE PEPITOS",
+            "volumenUnidad": 0.119,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 1,
+            "precioBulto": 710.59,
+            "precioUnidad": 710.59,
+            "cantBultosItem": 3,
+            "bonificacion": 0,
+            "importeItem": 2131.77
+        },
+        {
+            "codigo": "CH079",
+            "descripcion": "CHOCO TITA",
+            "volumenUnidad": null,
+            "medicionVolumen": "null",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 400,
+            "precioUnidad": 400,
+            "cantBultosItem": 36,
+            "bonificacion": 0,
+            "importeItem": 14400
+        },
+        {
+            "codigo": "CH062",
+            "descripcion": "CHOCO OBLEA BON O BON LECHE",
+            "volumenUnidad": 0.03,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 436.25,
+            "precioUnidad": 436.25,
+            "cantBultosItem": 20,
+            "bonificacion": 0,
+            "importeItem": 8725
+        },
+        {
+            "codigo": "1444",
+            "descripcion": "CHOCO AGUILA BARRITA",
+            "volumenUnidad": 0.014,
+            "medicionVolumen": "Kilogramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 9730.49,
+            "precioUnidad": 405,43,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 973
+        },
+        {
+            "codigo": "V0006",
+            "descripcion": "CHOCO KINDER",
+            "volumenUnidad": null,
+            "medicionVolumen": null,
+            "cantUnidadesBulto": 24,
+            "precioBulto": 10667.9,
+            "precioUnidad": 444.49,
+            "cantBultosItem": 3,
+            "bonificacion": 0,
+            "importeItem": 32003.7
+        },
+        {
+            "codigo": "P9035",
+            "descripcion": "TRIGO ORO LESS CROCANTE",
+            "volumenUnidad": 0.06,
+            "medicionVolumen": "Kilogramosramos",
+            "cantUnidadesBulto": 1,
+            "precioBulto": 600,
+            "precioUnidad": 600,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 600
+        }
+    ],
+    "subtotal": 131648.1,
+    "impuestos": {
+        "IVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "percepcionIVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "perepcionIIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "IIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 131648.1,
+    "totalTrasVencimiento": 131648.1
+}
+`
+const factura15 = fileToGenerativePart("facturasEntrenamiento/factura15.jpg", "image/jpg")
+const factura15Response = `
+{
+    "codigoFactura": "11730",
+    "tipoFactura": null,
+    "fechaEmision": "20-06-2024",
+    "fechaVencimiento": null,
+    "emisor": {
+        "nombre": "Don Roque",
+        "direccion": null,
+        "telefono": null,
+        "email": null,
+        "CUIT": null
+    },
+    "receptor": {
+        "nombre": "Eliana",
+        "direccion": "Miguel Angel 5495 (Entre y Quintana) VILLA BOSCH BUENOS AIRES",
+        "telefono": "11-3958-4741",
+        "email": null,
+        "CUIT": null
+    },
+    "items": [
+        {
+            "codigo": "1005099",
+            "descripcion": "P3 REVECA MASAS CAJA",
+            "volumenUnidad": 20,
+            "medicionVolumen": Kilogramos,
+            "cantUnidadesBulto": 25,
+            "precioBulto": 1050000,
+            "precioUnidad": 42000,
+            "cantBultosItem": 1,
+            "bonificacion": 0,
+            "importeItem": 1050000
+        }
+    ],
+    "subtotal": 1050000,
+    "impuestos": {
+        "IVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "percepcionIVA": {
+            "tasa": null,
+            "monto": null
+        },
+        "perepcionIIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "IIBB": {
+            "tasa": null,
+            "monto": null
+        },
+        "otrosImpuestos": []
+    },
+    "total": 1050000,
+    "totalTrasVencimiento": 1050000
+}
+`
   const chat = model.startChat({
     history: [
       {
@@ -1138,6 +1957,66 @@ const factura9Response = `
       {
         role: "model",
         parts: [{ text: factura9Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura10],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura10Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura11],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura11Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura12],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura12Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura13],
+      },,
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura12],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura12Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura13],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura13Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura14],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura14Response }],
+      },
+      {
+        role: "user",
+        parts: [{ text: "modo ultra-detallado"}, factura15],
+      },
+      {
+        role: "model",
+        parts: [{ text: factura15Response }],
       }
     ]
   });

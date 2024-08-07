@@ -52,8 +52,49 @@ app.get('/proveedor', (req, res) => {
       if (err) return res.json(err);
       return res.json(data)
     });
-  });  
-
+  }); 
+  
+  app.get('/items', (req, res) => {
+    const q = `
+      SELECT 
+        Descripcion, 
+        MedicionVolumen,
+        (precioUnidad / CASE 
+          WHEN VolumenUnidad = 0 THEN 1 
+          ELSE VolumenUnidad 
+        END) AS PrecioPorKiloLitro
+      FROM detallesfacturas
+    `;
+    
+    db.query(q, (err, data) => {
+      if (err) {
+        console.error('Error en la consulta:', err);
+        return res.status(500).json({ error: 'Error al obtener los datos' });
+      }
+      return res.json(data);
+    });
+  });
+  app.delete('/recetas/:id', (req, res) => {
+    const id = req.params.id;
+  
+    const q1 = 'DELETE FROM ingredientesRecetas WHERE idReceta = ?';
+    db.query(q1, [id], (err, results) => {
+      if (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Error al eliminar los ingredientes de la receta' });
+      } else {
+        const q2 = 'DELETE FROM recetas WHERE id = ?';
+        db.query(q2, [id], (err, results) => {
+          if (err) {
+            console.error(err);
+            res.status(500).json({ error: 'Error al eliminar la receta' });
+          } else {
+            res.status(200).json({ message: 'Receta eliminada correctamente' });
+          }
+        });
+      }
+    });
+  });
   app.get('/facturas', (req, res) => {
 
        const q = 'SELECT * FROM facturasregistradas';
@@ -62,6 +103,42 @@ app.get('/proveedor', (req, res) => {
       if (err) return res.json(err);
       return res.json(data)
     }); 
+  });
+
+  app.get('/recetas', (req, res) => {
+    const q = `
+      SELECT r.id, r.nombre, r.costoTotal, r.pesoTotal, r.cantUnidades,
+             ir.nombre AS ingrediente_nombre, ir.cantidadIndicada AS ingrediente_volumen, ir.precioTotal AS ingrediente_precio
+      FROM recetas r
+      INNER JOIN ingredientesRecetas ir ON r.id = ir.idReceta
+    `;
+  
+    db.query(q, (err, data) => {
+      if (err) return res.json(err);
+  
+      const recetas = {};
+  
+      data.forEach(row => {
+        if (!recetas[row.id]) {
+          recetas[row.id] = {
+            id: row.id,
+            nombre: row.nombre,
+            costoTotal: row.costoTotal,
+            pesoTotal: row.pesoTotal,
+            cantUnidades: row.cantUnidades,
+            ingredientes: []
+          };
+        }
+  
+        recetas[row.id].ingredientes.push({
+          nombre: row.ingrediente_nombre,
+          volumen: row.ingrediente_volumen,
+          precio: row.ingrediente_precio
+        });
+      });
+  
+      return res.json(Object.values(recetas));
+    });
   });
 
   app.put('/actualizarFactura/:id/:estadoAbonado', async (req, res) => {
@@ -73,6 +150,59 @@ app.get('/proveedor', (req, res) => {
         res.send(results);
         console.log(results)
     });
+});
+
+app.put('/nuevaReceta', async (req, res) => {
+
+  //obtener valores del front
+  const datos = req.body;
+
+  //insertar valores de la receta en Recetas
+  const recetaValores = [
+    datos.nombre,
+    datos.costoTotal,
+    datos.pesoTotal,
+    datos.cantUnidades
+  ]
+
+  const sqlReceta = 'INSERT INTO recetas (nombre, costoTotal, pesoTotal, cantUnidades) VALUES (?,?,?,?)';
+  db.query(sqlReceta, recetaValores, (err, result) => {
+    if (err) {
+      console.error('Error al insertar receta:', err);
+      return res.status(500).json({ message: 'Error al insertar la receta', error: err.message });
+    }
+    const recetaId = result.insertId; // Obtener el ID de la factura insertada
+    res.status(200).json({ message: 'receta insertada correctamente', recetaId: recetaId }); 
+    const ingredientes = datos.ingredientes;
+
+    const sqlIngredientes = `
+    INSERT INTO ingredientesRecetas (
+      idReceta, nombre, cantidadIndicada, precioTotal	
+    ) VALUES (?, ?, ?, ?)
+  `;
+  
+    ingredientes.forEach(async (ingrediente) => {
+      const ingredienteValores = [
+        recetaId,
+        ingrediente.nombre,
+        ingrediente.cantidadIndicada,
+        ingrediente.precioTotal,
+      ];
+  
+      try {
+        await db.query(sqlIngredientes, ingredienteValores);
+      } catch (error) {
+        console.error('Error al insertar el ítem:', error);
+        return res.status(500).json({ message: 'Error al insertar el ítem', error: error.message });
+      }
+      
+    }); 
+  });
+
+
+  //insertar ingrediente por ingrediente en ingredientesRecetas
+
+
 });
 
 
