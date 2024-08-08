@@ -1884,142 +1884,130 @@ const factura15Response = `
     "totalTrasVencimiento": 1050000
 }
 `
-  const chat = model.startChat({
-    history: [
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura1],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura1Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura2],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura2Response}],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura3],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura3Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura4],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura4Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura5],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura5Response }],
-      },
-       {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura6],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura6Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura7],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura7Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura8],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura8Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura9],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura9Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura10],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura10Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura11],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura11Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura12],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura12Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura13],
-      },,
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura12],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura12Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura13],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura13Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura14],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura14Response }],
-      },
-      {
-        role: "user",
-        parts: [{ text: "modo ultra-detallado"}, factura15],
-      },
-      {
-        role: "model",
-        parts: [{ text: factura15Response }],
-      }
-    ]
-  });
+const chat = model.startChat({
+  history: [
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura1],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura1Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura2],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura2Response}],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura3],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura3Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura4],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura4Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura5],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura5Response }],
+    },
+     {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura6],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura6Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura7],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura7Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura8],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura8Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura9],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura9Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura10],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura10Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura11],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura11Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura12],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura12Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura13],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura13Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura14],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura14Response }],
+    },
+    {
+      role: "user",
+      parts: [{ text: "modo ultra-detallado"}, factura15],
+    },
+    {
+      role: "model",
+      parts: [{ text: factura15Response }],
+    }
+  ]
+});
 
   const imagenUsuario = fileToGenerativePart(filePath, `image/${fileExtension}`)
 
