@@ -129,16 +129,16 @@ export async function run(filePath) {
       ]
       
      const generationConfig = {
-        "temperature": 0.4,
-        "top_p": 0.99,
-        "top_k": 128,
+        "temperature": 0.9,
+        "top_p": 0.95,
+        "top_k": 64,
         "max_output_tokens": 8192,
         "response_mime_type": "application/json",
       }
       
       try {
   // For text-and-image input (multimodal), use the gemini-pro-vision model
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro", safetySettings, systemInstruction, generationConfig  });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro-latest", safetySettings, systemInstruction, generationConfig  });
 
   const factura1 = fileToGenerativePart("facturasEntrenamiento/factura1.jpg", "image/jpg")
   const factura1Response = `
